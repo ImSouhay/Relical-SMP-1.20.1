@@ -1,0 +1,8 @@
+name: Relical-SMP
+version: '${project.version}'
+main: org.imsouhay.Relical_SMP.Main
+api-version: '1.20'
+commands:
+  RelicalGive:
+    description: Gives Custom Items to Players
+    usage: /RelicalGive [Player name OR @a (gives to anyone)] <Custom Item Number (from 1 to 4) or @e (gives everything)>
