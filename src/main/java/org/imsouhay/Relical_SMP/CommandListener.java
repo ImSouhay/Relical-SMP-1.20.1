@@ -92,7 +92,7 @@ public class CommandListener implements CommandExecutor {
 
 
         giveItem(targetPlayer, args[1], Integer.valueOf(args[2]));
-        if(args[1]=="@e"){commandSender.sendMessage("All Custom Items were given to the player: "+args[0]+".");}
+        if(args[1].equals("@e")){commandSender.sendMessage("All Custom Items were given to the player: "+args[0]+".");}
         else{commandSender.sendMessage("Custom Item number "+args[1]+" was given to the player: "+args[0]+".");}
 
         return true;
@@ -101,15 +101,20 @@ public class CommandListener implements CommandExecutor {
     private void giveItem(Player player,String arg, int tier) {
         if(arg.equals("@e")){
             player.getInventory().addItem(CustomRelics.getCustomItem1(tier));
-            player.getInventory().addItem(CustomRelics.getCustomItem2());
-            player.getInventory().addItem(CustomRelics.getCustomItem3());
-            player.getInventory().addItem(CustomRelics.getCustomItem4());
+            player.getInventory().addItem(CustomRelics.getCustomItem2(tier));
+            player.getInventory().addItem(CustomRelics.getCustomItem3(tier));
+            player.getInventory().addItem(CustomRelics.getCustomItem4(tier));
+            player.getInventory().addItem(CustomRelics.getCustomItem5(tier));
+            player.getInventory().addItem(CustomRelics.getCustomItem6(tier));
+            player.getInventory().addItem(CustomRelics.getCustomItem7(tier));
             return;
         }
-
         if(arg.equals("1")){player.getInventory().addItem(CustomRelics.getCustomItem1(tier));}
-        if(arg.equals("2")){player.getInventory().addItem(CustomRelics.getCustomItem2());}
-        if(arg.equals("3")){player.getInventory().addItem(CustomRelics.getCustomItem3());}
-        if(arg.equals("4")){player.getInventory().addItem(CustomRelics.getCustomItem4());}
+        if(arg.equals("2")){player.getInventory().addItem(CustomRelics.getCustomItem2(tier));}
+        if(arg.equals("3")){player.getInventory().addItem(CustomRelics.getCustomItem3(tier));}
+        if(arg.equals("4")){player.getInventory().addItem(CustomRelics.getCustomItem4(tier));}
+        if(arg.equals("5")){player.getInventory().addItem(CustomRelics.getCustomItem5(tier));}
+        if(arg.equals("6")){player.getInventory().addItem(CustomRelics.getCustomItem6(tier));}
+        if(arg.equals("7")){player.getInventory().addItem(CustomRelics.getCustomItem7(tier));}
     }
 }

@@ -178,12 +178,27 @@ public class CustomRelics {
         customItem5_3.setItemMeta(RelicsMaker.getMeta5(meta, 3));
     }
 
+
     private static void makeItem6_1(){
         ItemMeta meta=customItem6_1.getItemMeta();
         customItem6_1.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
         assert meta != null;
 
         customItem6_1.setItemMeta(RelicsMaker.getMeta6(meta, 1));
+    }
+    private static void makeItem6_2(){
+        ItemMeta meta=customItem6_2.getItemMeta();
+        customItem6_2.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
+        assert meta != null;
+
+        customItem6_2.setItemMeta(RelicsMaker.getMeta6(meta, 2));
+    }
+    private static void makeItem6_3(){
+        ItemMeta meta=customItem6_3.getItemMeta();
+        customItem6_3.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
+        assert meta != null;
+
+        customItem6_3.setItemMeta(RelicsMaker.getMeta6(meta, 3));
     }
 
 
@@ -211,8 +226,13 @@ public class CustomRelics {
 
 
     public static void makeCustomItems(){
-
-
+        makeItem1_1();makeItem1_2();makeItem1_3();
+        makeItem2_1();makeItem2_2();makeItem2_3();
+        makeItem3_1();makeItem3_2();makeItem3_3();
+        makeItem4_1();makeItem4_2();makeItem4_3();
+        makeItem5_1();makeItem5_2();makeItem5_3();
+        makeItem6_1();makeItem6_2();makeItem6_3();
+        makeItem7_1();makeItem7_2();makeItem7_3();
     }
 
     public static ItemStack getCustomItem1(int tier){
@@ -222,26 +242,58 @@ public class CustomRelics {
             default -> customItem1_3;
         };
     }
-    public static ItemStack getCustomItem2(){
-        return customItem2_3;
+    public static ItemStack getCustomItem2(int tier){
+        return switch (tier) {
+            case 1 -> customItem2_1;
+            case 2 -> customItem2_2;
+            default -> customItem2_3;
+        };
     }
-    public static ItemStack getCustomItem3(){
-        return customItem3_3;
+    public static ItemStack getCustomItem3(int tier){
+        return switch (tier) {
+            case 1 -> customItem3_1;
+            case 2 -> customItem3_2;
+            default -> customItem3_3;
+        };
     }
-    public static ItemStack getCustomItem4(){
-        return customItem4;
+    public static ItemStack getCustomItem4(int tier){
+        return switch (tier) {
+            case 1 -> customItem4_1;
+            case 2 -> customItem4_2;
+            default -> customItem4_3;
+        };
+    }
+    public static ItemStack getCustomItem5(int tier){
+        return switch (tier) {
+            case 1 -> customItem5_1;
+            case 2 -> customItem5_2;
+            default -> customItem5_3;
+        };
+    }
+    public static ItemStack getCustomItem6(int tier){
+        return switch (tier) {
+            case 1 -> customItem6_1;
+            case 2 -> customItem6_2;
+            default -> customItem6_3;
+        };
+    }
+    public static ItemStack getCustomItem7(int tier){
+        return switch (tier) {
+            case 1 -> customItem7_1;
+            case 2 -> customItem7_2;
+            default -> customItem7_3;
+        };
     }
 
+
     public static ItemStack getRandomCustomItem(){
-        int i= new Random().nextInt(4)+1;
+        int i= new Random().nextInt(7)+1;
         if(i==1){return customItem1_3;}
         if(i==2){return customItem2_3;}
         if(i==3){return customItem3_3;}
-        return customItem4;
-
+        if(i==4){return customItem4_3;}
+        if(i==5){return customItem5_3;}
+        if(i==6){return customItem6_3;}
+        return customItem7_3;
     }
-
-
-
-
 }
