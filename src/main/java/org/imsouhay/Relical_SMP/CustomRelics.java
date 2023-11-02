@@ -15,285 +15,111 @@ package org.imsouhay.Relical_SMP;
 
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static org.bukkit.plugin.java.JavaPlugin.getProvidingPlugin;
+
 
 public class CustomRelics {
 
-    // Ignore the chaos down here :-)
-
-    public static final ItemStack customItem1_1=new ItemStack(Material.RED_DYE);
-    public static final ItemStack customItem1_2=new ItemStack(Material.RED_DYE);
-    public static final ItemStack customItem1_3=new ItemStack(Material.RED_DYE);
-
-
-    public static final ItemStack customItem2_1=new ItemStack(Material.LIME_DYE);
-    public static final ItemStack customItem2_2=new ItemStack(Material.LIME_DYE);
-    public static final ItemStack customItem2_3=new ItemStack(Material.LIME_DYE);
-
-
-    public static final ItemStack customItem3_1=new ItemStack(Material.GREEN_DYE);
-    public static final ItemStack customItem3_2=new ItemStack(Material.GREEN_DYE);
-    public static final ItemStack customItem3_3=new ItemStack(Material.GREEN_DYE);
+    private static final String[] skin={
+            "http://textures.minecraft.net/texture/a409bd9607f4c1d694f6253c8b671d092f8b16ca7f66ebfd67ef9d864024774b",
+            "http://textures.minecraft.net/texture/a409bd9607f4c1d694f6253c8b671d092f8b16ca7f66ebfd67ef9d864024774b",
+            "http://textures.minecraft.net/texture/ba7bfa80a85e707eedf945b88905942f5f7795ea5264d692a22e707fc577a88b",
+            "http://textures.minecraft.net/texture/ba0a5b510a8d824ff4910ca5b2698aa3d030f837810e8d7f0bbca8cf06ce2023",
+            "http://textures.minecraft.net/texture/c9c28da01e012880eacc3ab1d34d9145357d2e2d46d42aa3b59edb91b1f7bd6d",
+            "http://textures.minecraft.net/texture/d40f9299508387618cfad6db35c9f6d807c49337d333d6ec3b13d9e87d0d488f",
+            "http://textures.minecraft.net/texture/7f50aa3e7229247aa598249c83aec462ab1654865e201e6925f55f5dd3643eca",
+            "http://textures.minecraft.net/texture/25d9243c61e2c3e1e0f9931843cadbd0dff4a646225ef54c557979cf39bb2057",
+    };
 
 
-    public static final ItemStack customItem4_1=new ItemStack(Material.PINK_DYE);
-    public static final ItemStack customItem4_2=new ItemStack(Material.PINK_DYE);
-    public static final ItemStack customItem4_3=new ItemStack(Material.PINK_DYE);
-
-
-    public static final ItemStack customItem5_1=new ItemStack(Material.BLACK_DYE);
-    public static final ItemStack customItem5_2=new ItemStack(Material.BLACK_DYE);
-    public static final ItemStack customItem5_3=new ItemStack(Material.BLACK_DYE);
-
-
-    public static final ItemStack customItem6_1=new ItemStack(Material.LIGHT_BLUE_DYE);
-    public static final ItemStack customItem6_2=new ItemStack(Material.LIGHT_BLUE_DYE);
-    public static final ItemStack customItem6_3=new ItemStack(Material.LIGHT_BLUE_DYE);
-
-
-    public static final ItemStack customItem7_1=new ItemStack(Material.PURPLE_DYE);
-    public static final ItemStack customItem7_2=new ItemStack(Material.PURPLE_DYE);
-    public static final ItemStack customItem7_3=new ItemStack(Material.PURPLE_DYE);
+    private static final ItemStack[][] customItem={
+            {
+                new ItemStack(Material.COMMAND_BLOCK),
+                new ItemStack(Material.COMMAND_BLOCK),
+                new ItemStack(Material.COMMAND_BLOCK)},
+            {
+                CustomSkulls.Skull(skin[1]),
+                CustomSkulls.Skull(skin[1]),
+                CustomSkulls.Skull(skin[1])},
+            {
+                CustomSkulls.Skull(skin[2]),
+                CustomSkulls.Skull(skin[2]),
+                CustomSkulls.Skull(skin[2])},
+            {
+                CustomSkulls.Skull(skin[3]),
+                CustomSkulls.Skull(skin[3]),
+                CustomSkulls.Skull(skin[3])},
+            {
+                CustomSkulls.Skull(skin[4]),
+                CustomSkulls.Skull(skin[4]),
+                CustomSkulls.Skull(skin[4])},
+            {
+                CustomSkulls.Skull(skin[5]),
+                CustomSkulls.Skull(skin[5]),
+                CustomSkulls.Skull(skin[5])},
+            {
+                CustomSkulls.Skull(skin[6]),
+                CustomSkulls.Skull(skin[6]),
+                CustomSkulls.Skull(skin[6])},
+            {
+                CustomSkulls.Skull(skin[7]),
+                CustomSkulls.Skull(skin[7]),
+                CustomSkulls.Skull(skin[7])}
+    };
 
 
     // This will make the custom items
-
-    private static void makeItem1_1(){
-        ItemMeta meta = customItem1_1.getItemMeta();
-        customItem1_1.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem1_1.setItemMeta(RelicsMaker.getMeta1(meta, 1));
-    }
-    private static void makeItem1_2(){
-        ItemMeta meta = customItem1_2.getItemMeta();
-        customItem1_2.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem1_2.setItemMeta(RelicsMaker.getMeta1(meta, 2));
-    }
-    private static void makeItem1_3(){
-        ItemMeta meta = customItem1_1.getItemMeta();
-        customItem1_3.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem1_3.setItemMeta(RelicsMaker.getMeta1(meta, 3));
-    }
-
-
-    private static void makeItem2_1(){
-        ItemMeta meta = customItem2_1.getItemMeta();
-        customItem2_1.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem2_1.setItemMeta(RelicsMaker.getMeta2(meta, 1));
-    }
-    private static void makeItem2_2(){
-        ItemMeta meta = customItem2_2.getItemMeta();
-        customItem2_2.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem2_2.setItemMeta(RelicsMaker.getMeta2(meta, 2));
-    }
-    private static void makeItem2_3(){
-        ItemMeta meta = customItem2_3.getItemMeta();
-        customItem2_3.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem2_3.setItemMeta(RelicsMaker.getMeta2(meta, 3));
-    }
-
-
-    private static void makeItem3_1(){
-        ItemMeta meta = customItem3_1.getItemMeta();
-        customItem3_1.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem3_1.setItemMeta(RelicsMaker.getMeta3(meta, 1));
-    }
-    private static void makeItem3_2(){
-        ItemMeta meta = customItem3_2.getItemMeta();
-        customItem3_2.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem3_2.setItemMeta(RelicsMaker.getMeta3(meta, 2));
-    }
-    private static void makeItem3_3(){
-        ItemMeta meta = customItem3_3.getItemMeta();
-        customItem3_3.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem3_3.setItemMeta(RelicsMaker.getMeta3(meta, 3));
-    }
-
-
-    private static void makeItem4_1(){
-        ItemMeta meta = customItem4_1.getItemMeta();
-        customItem4_1.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem4_1.setItemMeta(RelicsMaker.getMeta4(meta, 1));
-    }
-    private static void makeItem4_2(){
-        ItemMeta meta = customItem4_2.getItemMeta();
-        customItem4_2.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem4_2.setItemMeta(RelicsMaker.getMeta4(meta, 2));
-    }
-    private static void makeItem4_3(){
-        ItemMeta meta = customItem4_3.getItemMeta();
-        customItem4_3.addUnsafeEnchantment(Enchantment.VANISHING_CURSE,1);
-        assert meta != null;
-
-        customItem4_3.setItemMeta(RelicsMaker.getMeta4(meta, 3));
-    }
-
-
-    private static void makeItem5_1(){
-        ItemMeta meta=customItem5_1.getItemMeta();
-        customItem5_1.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem5_1.setItemMeta(RelicsMaker.getMeta5(meta, 1));
-    }
-    private static void makeItem5_2(){
-        ItemMeta meta=customItem5_2.getItemMeta();
-        customItem5_2.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem5_2.setItemMeta(RelicsMaker.getMeta5(meta, 2));
-    }
-    private static void makeItem5_3(){
-        ItemMeta meta=customItem5_3.getItemMeta();
-        customItem5_3.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem5_3.setItemMeta(RelicsMaker.getMeta5(meta, 3));
-    }
-
-
-    private static void makeItem6_1(){
-        ItemMeta meta=customItem6_1.getItemMeta();
-        customItem6_1.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem6_1.setItemMeta(RelicsMaker.getMeta6(meta, 1));
-    }
-    private static void makeItem6_2(){
-        ItemMeta meta=customItem6_2.getItemMeta();
-        customItem6_2.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem6_2.setItemMeta(RelicsMaker.getMeta6(meta, 2));
-    }
-    private static void makeItem6_3(){
-        ItemMeta meta=customItem6_3.getItemMeta();
-        customItem6_3.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem6_3.setItemMeta(RelicsMaker.getMeta6(meta, 3));
-    }
-
-
-    private static void makeItem7_1(){
-        ItemMeta meta=customItem7_1.getItemMeta();
-        customItem7_1.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem7_1.setItemMeta(RelicsMaker.getMeta7(meta, 1));
-    }
-    private static void makeItem7_2(){
-        ItemMeta meta=customItem7_2.getItemMeta();
-        customItem7_2.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem7_2.setItemMeta(RelicsMaker.getMeta7(meta, 2));
-    }
-    private static void makeItem7_3(){
-        ItemMeta meta=customItem7_3.getItemMeta();
-        customItem7_3.addUnsafeEnchantment(Enchantment.VANISHING_CURSE, 1);
-        assert meta != null;
-
-        customItem7_3.setItemMeta(RelicsMaker.getMeta7(meta, 3));
-    }
-
-
     public static void makeCustomItems(){
-        makeItem1_1();makeItem1_2();makeItem1_3();
-        makeItem2_1();makeItem2_2();makeItem2_3();
-        makeItem3_1();makeItem3_2();makeItem3_3();
-        makeItem4_1();makeItem4_2();makeItem4_3();
-        makeItem5_1();makeItem5_2();makeItem5_3();
-        makeItem6_1();makeItem6_2();makeItem6_3();
-        makeItem7_1();makeItem7_2();makeItem7_3();
+        for(int i=1;i<=7;i++){
+            for(int j=0;j<=2;j++){
+                ItemMeta meta= customItem[i][j].getItemMeta();
+                assert meta != null;
+                NamespacedKey key= new NamespacedKey(getProvidingPlugin(Main.class), "customitem");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "true");
+                customItem[i][j].setItemMeta(RelicsMaker.getMeta(meta, i, j));
+            }
+        }
     }
 
-    public static ItemStack getCustomItem1(int tier){
-        return switch (tier) {
-            case 1 -> customItem1_1;
-            case 2 -> customItem1_2;
-            default -> customItem1_3;
-        };
-    }
-    public static ItemStack getCustomItem2(int tier){
-        return switch (tier) {
-            case 1 -> customItem2_1;
-            case 2 -> customItem2_2;
-            default -> customItem2_3;
-        };
-    }
-    public static ItemStack getCustomItem3(int tier){
-        return switch (tier) {
-            case 1 -> customItem3_1;
-            case 2 -> customItem3_2;
-            default -> customItem3_3;
-        };
-    }
-    public static ItemStack getCustomItem4(int tier){
-        return switch (tier) {
-            case 1 -> customItem4_1;
-            case 2 -> customItem4_2;
-            default -> customItem4_3;
-        };
-    }
-    public static ItemStack getCustomItem5(int tier){
-        return switch (tier) {
-            case 1 -> customItem5_1;
-            case 2 -> customItem5_2;
-            default -> customItem5_3;
-        };
-    }
-    public static ItemStack getCustomItem6(int tier){
-        return switch (tier) {
-            case 1 -> customItem6_1;
-            case 2 -> customItem6_2;
-            default -> customItem6_3;
-        };
-    }
-    public static ItemStack getCustomItem7(int tier){
-        return switch (tier) {
-            case 1 -> customItem7_1;
-            case 2 -> customItem7_2;
-            default -> customItem7_3;
-        };
+
+    public static ItemStack getCustomItem(int itemNum, int tier){
+        return customItem[itemNum][tier-1];
     }
 
+
+    public static boolean checkAllItems(ItemStack item){
+        for(int i=1;i<=7;i++){
+            for(int j=0;j<=2;j++){
+                if(item.isSimilar(customItem[i][j])){return true;}
+            }
+        }
+        return false;
+    }
+
+
+    public static ItemStack getRandomCustomItem(int tier){
+        int i= new Random().nextInt(7)+1;
+
+        return customItem[i][tier-1];
+    }
 
     public static ItemStack getRandomCustomItem(){
         int i= new Random().nextInt(7)+1;
-        if(i==1){return customItem1_3;}
-        if(i==2){return customItem2_3;}
-        if(i==3){return customItem3_3;}
-        if(i==4){return customItem4_3;}
-        if(i==5){return customItem5_3;}
-        if(i==6){return customItem6_3;}
-        return customItem7_3;
+        int tier= new Random().nextInt(3);
+
+        return customItem[i][tier];
     }
+
 }

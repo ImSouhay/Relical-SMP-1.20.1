@@ -21,23 +21,23 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
-public class CommandListener implements CommandExecutor {
+public class RelicalGiveListener implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if(args.length<3){
-            commandSender.sendMessage("§cUsage: /RelicalGive [PlayerIGN OR @a] <Item-Number(from 1 to 4) OR @e to get all items> {Tier Lvl(1-2-3)}");
-            return false;
+            commandSender.sendMessage("§cUsage: /RelicalGive [PlayerIGN OR @a] <Item-Number(from 1 to 7) OR @e to get all items> {Tier Lvl(1-2-3)}");
+            return true;
         }
 
         try{
             if(Integer.valueOf(args[2])!=1 && Integer.valueOf(args[2])!=2 && Integer.valueOf(args[2])!=3){
                 commandSender.sendMessage("§cTier lvl "+args[2]+" is not right, it should be (1 OR 2 OR 3)");
-                return false;
+                return true;
             }
         }catch (Exception e){
             commandSender.sendMessage("§cTier lvl "+args[2]+" is not right, it should be (1 OR 2 OR 3)");
-            return false;
+            return true;
         }
 
         boolean bool=true;
@@ -48,7 +48,7 @@ public class CommandListener implements CommandExecutor {
 
             if(!first){
                 commandSender.sendMessage("§cCant find the Player: "+args[0]);
-                return false;
+                return true;
             }
             for(Player player: Bukkit.getOnlinePlayers()){
                  if(player.getName().equals(args[0])){
@@ -57,17 +57,19 @@ public class CommandListener implements CommandExecutor {
                      break;
                 }
             }
-            first=false;}
+            first=false;
+        }
+
         try {
             if (!args[1].equals("@e")) {
-                if (Integer.parseInt(args[1]) > 4 || Integer.parseInt(args[1]) < 1) {
-                    commandSender.sendMessage("§cThe item number: " + args[1] + " is out of boundaries (1-4)");
-                    return false;
+                if (Integer.parseInt(args[1]) > 7 || Integer.parseInt(args[1]) < 1) {
+                    commandSender.sendMessage("§cThe item number: " + args[1] + " is out of boundaries (1-7)");
+                    return true;
                 }
             }
         }catch (Exception e){
-            commandSender.sendMessage(args[1]+" is not a valid Item Number (from 1 to 4 OR @e to get everything).");
-            return false;
+            commandSender.sendMessage("§c"+args[1]+" is not a valid Item Number (from 1 to 4 OR @e to get everything).");
+            return true;
         }
 
         int PLAYERS_COUNT=0;
@@ -100,21 +102,11 @@ public class CommandListener implements CommandExecutor {
 
     private void giveItem(Player player,String arg, int tier) {
         if(arg.equals("@e")){
-            player.getInventory().addItem(CustomRelics.getCustomItem1(tier));
-            player.getInventory().addItem(CustomRelics.getCustomItem2(tier));
-            player.getInventory().addItem(CustomRelics.getCustomItem3(tier));
-            player.getInventory().addItem(CustomRelics.getCustomItem4(tier));
-            player.getInventory().addItem(CustomRelics.getCustomItem5(tier));
-            player.getInventory().addItem(CustomRelics.getCustomItem6(tier));
-            player.getInventory().addItem(CustomRelics.getCustomItem7(tier));
+            for(int i=1;i<=7;i++){
+                player.getInventory().addItem(CustomRelics.getCustomItem(i, tier));
+            }
             return;
         }
-        if(arg.equals("1")){player.getInventory().addItem(CustomRelics.getCustomItem1(tier));}
-        if(arg.equals("2")){player.getInventory().addItem(CustomRelics.getCustomItem2(tier));}
-        if(arg.equals("3")){player.getInventory().addItem(CustomRelics.getCustomItem3(tier));}
-        if(arg.equals("4")){player.getInventory().addItem(CustomRelics.getCustomItem4(tier));}
-        if(arg.equals("5")){player.getInventory().addItem(CustomRelics.getCustomItem5(tier));}
-        if(arg.equals("6")){player.getInventory().addItem(CustomRelics.getCustomItem6(tier));}
-        if(arg.equals("7")){player.getInventory().addItem(CustomRelics.getCustomItem7(tier));}
+        player.getInventory().addItem(CustomRelics.getCustomItem(Integer.valueOf(arg), tier));
     }
 }
