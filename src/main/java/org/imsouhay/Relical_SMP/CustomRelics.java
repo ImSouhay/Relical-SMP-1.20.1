@@ -86,9 +86,8 @@ public class CustomRelics {
             for(int j=0;j<=2;j++){
                 ItemMeta meta= customItem[i][j].getItemMeta();
                 assert meta != null;
-                NamespacedKey key= new NamespacedKey(getProvidingPlugin(Main.class), "customitem");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "true");
-                customItem[i][j].setItemMeta(RelicsMaker.getMeta(meta, i, j));
+
+                customItem[i][j].setItemMeta(RelicsMaker.getMeta(meta, i, j+1));
             }
         }
     }

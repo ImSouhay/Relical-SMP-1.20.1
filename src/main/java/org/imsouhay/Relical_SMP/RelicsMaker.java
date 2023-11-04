@@ -14,13 +14,18 @@
 package org.imsouhay.Relical_SMP;
 
 
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.bukkit.plugin.java.JavaPlugin.getProvidingPlugin;
+
 
 public class RelicsMaker {
+    private static final NamespacedKey key= new NamespacedKey(getProvidingPlugin(Main.class), "customitem");
     
     public static ItemMeta getMeta(ItemMeta meta, int itemNum, int tier){
         return switch (itemNum){
@@ -55,7 +60,6 @@ public class RelicsMaker {
             lore.add("§4Passive Effects:");
             lore.add("§7Strength §8§l1");
             lore.add("§7Slowness §8§l1");
-
         }
         if(tier==2){
             meta.setDisplayName("§4§lThe Strength Relic II");
@@ -94,6 +98,7 @@ public class RelicsMaker {
             lore.add("§7Strength §8§l3");
             lore.add("§7Slowness §8§l2");
         }
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Strength-"+tier);
 
         meta.setLore(lore);
         return meta;
@@ -151,6 +156,7 @@ public class RelicsMaker {
             lore.add("§7Luck §8§l1");
             lore.add("§8§l9 §r§7Hearts only");
         }
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Wealth-"+tier);
 
         meta.setLore(lore);
         return meta;
@@ -206,8 +212,9 @@ public class RelicsMaker {
             lore.add("§7Speed §8§l3");
             lore.add("§7Weakness §8§l1");
             lore.add("§7Haste §8§l3");
-            lore.add("§a++§7Attack Speed");
+            lore.add("§a+§7Attack Speed");
         }
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Speed-"+tier);
 
         meta.setLore(lore);
         return meta;
@@ -264,6 +271,7 @@ public class RelicsMaker {
             lore.add("§7Regeneration §8§l3");
             lore.add("§7Glowing");
         }
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Regeneration-"+tier);
 
         meta.setLore(lore);
         return meta;
@@ -319,6 +327,7 @@ public class RelicsMaker {
             lore.add("§7Slow Falling");
             lore.add("§7Invisibility");
         }
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Phantom-"+tier);
 
         meta.setLore(lore);
         return meta;
@@ -344,7 +353,7 @@ public class RelicsMaker {
             lore.add("§r");
             lore.add("§r");
             lore.add("§3Passive Effects:");
-            lore.add("§c--§7Attack Speed");
+            lore.add("§c-§7Attack Speed");
         }
         if(tier==2){
             meta.setDisplayName("§b§lThe Ice Relic II");
@@ -363,7 +372,7 @@ public class RelicsMaker {
             lore.add("§r");
             lore.add("§r");
             lore.add("§3Passive Effects:");
-            lore.add("§c--§7Attack Speed");
+            lore.add("§c-§7Attack Speed");
         }
 
         if(tier==3){
@@ -382,8 +391,9 @@ public class RelicsMaker {
             lore.add("§r");
             lore.add("§r");
             lore.add("§3Passive Effects:");
-            lore.add("§c--§7Attack Speed");
+            lore.add("§c-§7Attack Speed");
         }
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Ice-"+tier);
 
 
         meta.setLore(lore);
@@ -462,6 +472,7 @@ public class RelicsMaker {
             lore.add("§8§oGives you the ability to morph into any player you attack for 1 hour.");
             lore.add("§a30mn §8CoolDown.");
         }
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "BlackMagic-"+tier);
 
         meta.setLore(lore);
         return meta;
